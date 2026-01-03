@@ -1,13 +1,12 @@
 cask "quickcsv" do
-  version "0.3.2"
-  sha256 "5352d5a7759449c81a953bd3b8c3d2862e2edfd8bc4bc5aeb256e3f9cc03ceb8"
+  version "0.4.0"
+  sha256 "d85c7a16a4d8a82e7aa1a26a7c1dbc90cde8c87581a84fb432b584467ae20700"
 
   url "https://github.com/ayu5h-raj/quickcsv/releases/download/v#{version}/QuickCSV-v#{version}-macos.zip"
   name "QuickCSV"
   desc "High-performance CSV viewer for macOS"
   homepage "https://github.com/ayu5h-raj/quickcsv"
 
-  # Remove quarantine attribute (app is not code-signed)
   postflight do
     system_command "/usr/bin/xattr",
                    args: ["-cr", "#{appdir}/QuickCSV.app"],
