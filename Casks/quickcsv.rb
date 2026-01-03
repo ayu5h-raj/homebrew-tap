@@ -1,6 +1,6 @@
 cask "quickcsv" do
-  version "0.6.0"
-  sha256 "4616b80b768bf3c6df44e54b0dceefa5718bfd526ebbc54daeb77fb3f077b192"
+  version "0.6.1"
+  sha256 "d8ee32e33bb6980a02593f002d74017f4ec3d204da76cf1cb6cc93450d8a9e72"
 
   url "https://github.com/ayu5h-raj/quickcsv/releases/download/v#{version}/QuickCSV-v#{version}-macos.zip"
   name "QuickCSV"
