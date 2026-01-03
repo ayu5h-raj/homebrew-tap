@@ -7,6 +7,13 @@ cask "quickcsv" do
   desc "High-performance CSV viewer for macOS"
   homepage "https://github.com/ayu5h-raj/quickcsv"
 
+  # Remove quarantine attribute (app is not code-signed)
+  postflight do
+    system_command "/usr/bin/xattr",
+                   args: ["-cr", "#{appdir}/QuickCSV.app"],
+                   sudo: false
+  end
+
   app "QuickCSV.app"
 
   zap trash: [
