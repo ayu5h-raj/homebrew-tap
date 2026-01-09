@@ -1,17 +1,17 @@
 class WtfCli < Formula
   desc "Write The Formula - AI-powered natural language to shell command translator"
   homepage "https://github.com/ayu5h-raj/wtf-cli"
-  version "0.3.2"
+  version "0.3.3"
   license "MIT"
 
   on_macos do
     on_arm do
-      url "https://github.com/ayu5h-raj/wtf-cli/releases/download/v0.3.2/wtf-macos-arm64-v0.3.2.tar.gz"
-      sha256 "c3cd683161900a05f6642defbcad83866cd2722634734c6dfee6704f9f8af4b5"
+      url "https://github.com/ayu5h-raj/wtf-cli/releases/download/v0.3.3/wtf-macos-arm64-v0.3.3.tar.gz"
+      sha256 "4ffdcc2037b58fe86283cd232b1146124e0b68371d06b902c8bf22d5d9e21e0b"
     end
     on_intel do
-      url "https://github.com/ayu5h-raj/wtf-cli/releases/download/v0.3.2/wtf-macos-intel-v0.3.2.tar.gz"
-      sha256 "4a96850cfb9c5401ab2b431e86b3d0171052a63f1c30c8c3e2751480418b8aca"
+      url "https://github.com/ayu5h-raj/wtf-cli/releases/download/v0.3.3/wtf-macos-intel-v0.3.3.tar.gz"
+      sha256 "f41b066b9f43d60c70cc6c8abdcd51b7e84246d2eee8179880162cbf568b6a65"
     end
   end
 
@@ -27,7 +27,7 @@ class WtfCli < Formula
       Other:         export WTF_API_KEY='key' WTF_BASE_URL='url' WTF_MODEL='model'
       
       Enable shell integration (Add to ~/.zshrc):
-        eval "$(wtf --init zsh)"
+        eval "$(command wtf --init zsh)"
 
       Get a free Gemini key: https://aistudio.google.com/app/apikey
 
