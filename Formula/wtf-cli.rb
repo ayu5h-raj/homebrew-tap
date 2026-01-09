@@ -1,17 +1,17 @@
 class WtfCli < Formula
   desc "Write The Formula - AI-powered natural language to shell command translator"
   homepage "https://github.com/ayu5h-raj/wtf-cli"
-  version "0.3.8"
+  version "0.4.0"
   license "MIT"
 
   on_macos do
     on_arm do
-      url "https://github.com/ayu5h-raj/wtf-cli/releases/download/v0.3.8/wtf-macos-arm64-v0.3.8.tar.gz"
-      sha256 "a476cda08ceb5ba9e70bf2e4296ea2be9b8d51e56c1d2e169d1696af4478f7b6"
+      url "https://github.com/ayu5h-raj/wtf-cli/releases/download/v0.4.0/wtf-macos-arm64-v0.4.0.tar.gz"
+      sha256 "b6e3e64dcf681b423837ecfc5a64192e3bc6de14bd04c2328565f5fac47fd3da"
     end
     on_intel do
-      url "https://github.com/ayu5h-raj/wtf-cli/releases/download/v0.3.8/wtf-macos-intel-v0.3.8.tar.gz"
-      sha256 "6e8b594ac582076753af60fa36c0f6c621549f9299780f9dfe8edbfc7db5fd42"
+      url "https://github.com/ayu5h-raj/wtf-cli/releases/download/v0.4.0/wtf-macos-intel-v0.4.0.tar.gz"
+      sha256 "84bc8da64ebc2a3e3c1fb72549cd5a4dc8b28685cfcbe436c758905ece637e48"
     end
   end
 
