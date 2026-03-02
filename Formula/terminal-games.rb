@@ -7,7 +7,7 @@ class TerminalGames < Formula
   sha256 "433a078e3ace709fd06f17bc5417e2d5cc34fbc8d261b2087b9b1a8ccf0ed67c"
   license "MIT"
 
-  depends_on "python@3.12"
+  depends_on "python@3.13"
 
   resource "blessed" do
     url "https://files.pythonhosted.org/packages/e6/0c/658dea9ba35fcea19e6feaa8ba0d2dbf8cac9aeaa1f9ab1d77d36f534757/blessed-1.32.0.tar.gz"
