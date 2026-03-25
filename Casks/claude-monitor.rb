@@ -1,8 +1,8 @@
 cask "claude-monitor" do
-  version "0.1.2"
-  sha256 "8feacb64bc03c9e6a4e6754ee19c281c82979f299441f8add8eceb20f0267ed4"
+  version "0.1.3"
+  sha256 "fbce7dba8c1b861176687490383f471a0696b07583be3a3e474f2a342678a522"
 
-  url "https://github.com/ayu5h-raj/claude-monitor/releases/download/v0.1.2/Claude-Monitor-0.1.2-arm64.dmg"
+  url "https://github.com/ayu5h-raj/claude-monitor/releases/download/v0.1.3/Claude-Monitor-0.1.3-arm64.dmg"
   name "Claude Monitor"
   desc "Terminal-themed dashboard for monitoring Claude Code sessions"
   homepage "https://github.com/ayu5h-raj/claude-monitor"
