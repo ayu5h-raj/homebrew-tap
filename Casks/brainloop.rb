@@ -10,6 +10,11 @@ cask "brainloop" do
   depends_on arch: :arm64
   depends_on macos: ">= :monterey"
 
+  preflight do
+    target = "#{appdir}/Brainloop.app"
+    FileUtils.rm_rf(target) if File.exist?(target) && !File.symlink?(target)
+  end
+
   postflight do
     system_command "/usr/bin/xattr",
                    args: ["-cr", "#{appdir}/Brainloop.app"],
