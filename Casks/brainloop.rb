@@ -1,6 +1,6 @@
 cask "brainloop" do
-  version "0.1.2"
-  sha256 "d2a5eadd7cd09eb1ddaf03424ebf2be3e836224cd268416b3fa212ff19b38175"
+  version "0.1.3"
+  sha256 "19beb1addd5a6f48ab68ec09c6632e1dd880ac70b24ec5ec2f1e803648f16c76"
 
   url "https://github.com/arunachalam-github/brainloop/releases/download/v#{version}/Brainloop_#{version}_aarch64.dmg"
   name "Brainloop"
