@@ -19,6 +19,16 @@ cask "brainloop" do
     system_command "/usr/bin/xattr",
                    args: ["-cr", "#{appdir}/Brainloop.app"],
                    sudo: false
+
+    # If a brainloop LaunchAgent is already loaded (upgrade case), the running
+    # daemon process is now orphaned — its binary file was just replaced under
+    # it. Reload so the new binary actually takes over instead of waiting for
+    # the user to reboot or reopen Brainloop.app.
+    plist = "#{Dir.home}/Library/LaunchAgents/com.brainloop.agent.plist"
+    if File.exist?(plist)
+      system_command "/bin/launchctl", args: ["unload", plist], must_succeed: false
+      system_command "/bin/launchctl", args: ["load",   plist], must_succeed: false
+    end
   end
 
   app "Brainloop.app"
