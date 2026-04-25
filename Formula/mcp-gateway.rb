@@ -5,13 +5,13 @@
 class McpGateway < Formula
   desc "Local-first MCP aggregator — k9s for MCP"
   homepage "https://github.com/ayu5h-raj/mcp-gateway"
-  version "1.0.3"
+  version "1.0.4"
   license "MIT"
 
   on_macos do
     if Hardware::CPU.intel?
-      url "https://github.com/ayu5h-raj/mcp-gateway/releases/download/v1.0.3/mcp-gateway-macos-intel-v1.0.3.tar.gz"
-      sha256 "23d60d78d9d748626b835c8516429f6ad10d8d7dfd5a197bd4e1e4c2988baae6"
+      url "https://github.com/ayu5h-raj/mcp-gateway/releases/download/v1.0.4/mcp-gateway-macos-intel-v1.0.4.tar.gz"
+      sha256 "ae50bd933e5a0351d585f797e98ae93ea661030f628dbcdbc1a4cf848a705df7"
 
       define_method(:install) do
         bin.install "mcp-gateway"
@@ -19,8 +19,8 @@ class McpGateway < Formula
       end
     end
     if Hardware::CPU.arm?
-      url "https://github.com/ayu5h-raj/mcp-gateway/releases/download/v1.0.3/mcp-gateway-macos-arm64-v1.0.3.tar.gz"
-      sha256 "cf9a8d020f9143f63391c6217bd8d34859435214c3218d866e01898ade3b8d71"
+      url "https://github.com/ayu5h-raj/mcp-gateway/releases/download/v1.0.4/mcp-gateway-macos-arm64-v1.0.4.tar.gz"
+      sha256 "8d6342c07c06058633fc286eeb3ba342ede47e5c7fd7da2383e524884d1a8303"
 
       define_method(:install) do
         bin.install "mcp-gateway"
@@ -31,16 +31,16 @@ class McpGateway < Formula
 
   on_linux do
     if Hardware::CPU.intel? && Hardware::CPU.is_64_bit?
-      url "https://github.com/ayu5h-raj/mcp-gateway/releases/download/v1.0.3/mcp-gateway-linux-intel-v1.0.3.tar.gz"
-      sha256 "fe951e30cee23ede7eeeda1091fd86d8b69d17b8d95871292f610c640220e568"
+      url "https://github.com/ayu5h-raj/mcp-gateway/releases/download/v1.0.4/mcp-gateway-linux-intel-v1.0.4.tar.gz"
+      sha256 "55cad684c86440bf53572e1d0522265a4d5fb85362320d788ff60c69981ca0e4"
       define_method(:install) do
         bin.install "mcp-gateway"
         bin.install "mgw-smoke"
       end
     end
     if Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
-      url "https://github.com/ayu5h-raj/mcp-gateway/releases/download/v1.0.3/mcp-gateway-linux-arm64-v1.0.3.tar.gz"
-      sha256 "a2d77febe7b7d464d2ffaa45ed36b9c08b89bb12f628a2152081037234dad6fb"
+      url "https://github.com/ayu5h-raj/mcp-gateway/releases/download/v1.0.4/mcp-gateway-linux-arm64-v1.0.4.tar.gz"
+      sha256 "6ffbe4404bbe60f69a4617b6e252f0cb587a27ae248059422e0491cf7e92c743"
       define_method(:install) do
         bin.install "mcp-gateway"
         bin.install "mgw-smoke"
@@ -48,29 +48,24 @@ class McpGateway < Formula
     end
   end
 
-  uninstall_preflight do
-    # Tear down the launchd plist before the binary disappears.
-    # `service uninstall` is idempotent: a no-op if the user never ran
-    # `mcp-gateway service install`. We swallow errors so a partially
-    # broken install never blocks brew from removing the binary.
-    system "#{bin}/mcp-gateway", "service", "uninstall" rescue nil
-  end
-
   def caveats
     <<~EOS
-      First-run wizard:
+      First-run wizard (run once):
         mcp-gateway init
 
-      Useful commands once installed:
+      Useful commands:
         mcp-gateway tui              live ops dashboard
         mcp-gateway list             show servers + tool counts
         mcp-gateway service status   inspect the launchd auto-start service
 
-      `mcp-gateway init` can install a launchd plist so the daemon auto-starts
-      on login. `brew uninstall` will automatically tear down that plist via the
-      uninstall preflight, but it WILL NOT delete `~/.mcp-gateway/` (your config
-      and logs). Remove it manually if you no longer want it:
-        rm -rf ~/.mcp-gateway
+      Uninstall — run in this order:
+        mcp-gateway service uninstall    # tear down the launchd plist (idempotent)
+        brew uninstall mcp-gateway
+        rm -rf ~/.mcp-gateway            # optional: delete config + logs
+
+      Skipping `service uninstall` first will leave a launchd plist on disk
+      that respawns the now-missing binary on a loop until you remove
+      ~/Library/LaunchAgents/com.ayu5h-raj.mcp-gateway.plist by hand.
     EOS
   end
 
