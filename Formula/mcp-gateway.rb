@@ -5,13 +5,13 @@
 class McpGateway < Formula
   desc "Local-first MCP aggregator — k9s for MCP"
   homepage "https://github.com/ayu5h-raj/mcp-gateway"
-  version "1.0.0"
+  version "1.0.1"
   license "MIT"
 
   on_macos do
     if Hardware::CPU.intel?
-      url "https://github.com/ayu5h-raj/mcp-gateway/releases/download/v1.0.0/mcp-gateway-macos-intel-v1.0.0.tar.gz"
-      sha256 "1dc30a7cd3fc9ab2a2eb2275804679555d7d20788a64904e11ecc8f2612c5f5e"
+      url "https://github.com/ayu5h-raj/mcp-gateway/releases/download/v1.0.1/mcp-gateway-macos-intel-v1.0.1.tar.gz"
+      sha256 "8c5571528a4b1cd2c66dcd91b12e9a6f02480dc24d39f2340551c072b8375b1c"
 
       define_method(:install) do
         bin.install "mcp-gateway"
@@ -19,8 +19,8 @@ class McpGateway < Formula
       end
     end
     if Hardware::CPU.arm?
-      url "https://github.com/ayu5h-raj/mcp-gateway/releases/download/v1.0.0/mcp-gateway-macos-arm64-v1.0.0.tar.gz"
-      sha256 "4b05fefd180ac5d6ccf3ade28eaa206a932bea813adbad9c16a89b4062b9fec3"
+      url "https://github.com/ayu5h-raj/mcp-gateway/releases/download/v1.0.1/mcp-gateway-macos-arm64-v1.0.1.tar.gz"
+      sha256 "1f6427a86c00adf053e0a8e71c5919d9d7273c1b5cc94329d5074f8101ef6036"
 
       define_method(:install) do
         bin.install "mcp-gateway"
@@ -31,16 +31,16 @@ class McpGateway < Formula
 
   on_linux do
     if Hardware::CPU.intel? && Hardware::CPU.is_64_bit?
-      url "https://github.com/ayu5h-raj/mcp-gateway/releases/download/v1.0.0/mcp-gateway-linux-intel-v1.0.0.tar.gz"
-      sha256 "2617e7fd7341f375593db9b365f99aaffa11bfbe5c5a40ef090f4aec1b6129bc"
+      url "https://github.com/ayu5h-raj/mcp-gateway/releases/download/v1.0.1/mcp-gateway-linux-intel-v1.0.1.tar.gz"
+      sha256 "f95302b603b63e46d26148c55ab81edd5d24dc36483fbcaa8cc35680f3653579"
       define_method(:install) do
         bin.install "mcp-gateway"
         bin.install "mgw-smoke"
       end
     end
     if Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
-      url "https://github.com/ayu5h-raj/mcp-gateway/releases/download/v1.0.0/mcp-gateway-linux-arm64-v1.0.0.tar.gz"
-      sha256 "1d638335f64183e8daf5ac78c148399e5cd124789ebba46dc0d1fcf443a71bce"
+      url "https://github.com/ayu5h-raj/mcp-gateway/releases/download/v1.0.1/mcp-gateway-linux-arm64-v1.0.1.tar.gz"
+      sha256 "d4d7c6d6f354851e9fe3147137fbf41235fbd5833c59f9b1dbd4114b4996f44b"
       define_method(:install) do
         bin.install "mcp-gateway"
         bin.install "mgw-smoke"
