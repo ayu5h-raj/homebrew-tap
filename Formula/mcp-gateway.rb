@@ -5,13 +5,13 @@
 class McpGateway < Formula
   desc "Local-first MCP aggregator — k9s for MCP"
   homepage "https://github.com/ayu5h-raj/mcp-gateway"
-  version "1.0.2"
+  version "1.0.3"
   license "MIT"
 
   on_macos do
     if Hardware::CPU.intel?
-      url "https://github.com/ayu5h-raj/mcp-gateway/releases/download/v1.0.2/mcp-gateway-macos-intel-v1.0.2.tar.gz"
-      sha256 "cd4ad7917d041942217565ed72a97b352232e418e5563338d205b8fcac6e7600"
+      url "https://github.com/ayu5h-raj/mcp-gateway/releases/download/v1.0.3/mcp-gateway-macos-intel-v1.0.3.tar.gz"
+      sha256 "23d60d78d9d748626b835c8516429f6ad10d8d7dfd5a197bd4e1e4c2988baae6"
 
       define_method(:install) do
         bin.install "mcp-gateway"
@@ -19,8 +19,8 @@ class McpGateway < Formula
       end
     end
     if Hardware::CPU.arm?
-      url "https://github.com/ayu5h-raj/mcp-gateway/releases/download/v1.0.2/mcp-gateway-macos-arm64-v1.0.2.tar.gz"
-      sha256 "5b29d3f1450760fb30ba1c8eb44241cba2194d2ddbf1977bb47df356dd762d72"
+      url "https://github.com/ayu5h-raj/mcp-gateway/releases/download/v1.0.3/mcp-gateway-macos-arm64-v1.0.3.tar.gz"
+      sha256 "cf9a8d020f9143f63391c6217bd8d34859435214c3218d866e01898ade3b8d71"
 
       define_method(:install) do
         bin.install "mcp-gateway"
@@ -31,21 +31,47 @@ class McpGateway < Formula
 
   on_linux do
     if Hardware::CPU.intel? && Hardware::CPU.is_64_bit?
-      url "https://github.com/ayu5h-raj/mcp-gateway/releases/download/v1.0.2/mcp-gateway-linux-intel-v1.0.2.tar.gz"
-      sha256 "c28792b7483485bd037fb87c3eb7433cfcec7107d702bb06babdcc8b4b6f030b"
+      url "https://github.com/ayu5h-raj/mcp-gateway/releases/download/v1.0.3/mcp-gateway-linux-intel-v1.0.3.tar.gz"
+      sha256 "fe951e30cee23ede7eeeda1091fd86d8b69d17b8d95871292f610c640220e568"
       define_method(:install) do
         bin.install "mcp-gateway"
         bin.install "mgw-smoke"
       end
     end
     if Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
-      url "https://github.com/ayu5h-raj/mcp-gateway/releases/download/v1.0.2/mcp-gateway-linux-arm64-v1.0.2.tar.gz"
-      sha256 "c6c37e9184c4fcdc06ba4878650a47d7cac3980febf5fbc5d170cb6826f10b83"
+      url "https://github.com/ayu5h-raj/mcp-gateway/releases/download/v1.0.3/mcp-gateway-linux-arm64-v1.0.3.tar.gz"
+      sha256 "a2d77febe7b7d464d2ffaa45ed36b9c08b89bb12f628a2152081037234dad6fb"
       define_method(:install) do
         bin.install "mcp-gateway"
         bin.install "mgw-smoke"
       end
     end
+  end
+
+  uninstall_preflight do
+    # Tear down the launchd plist before the binary disappears.
+    # `service uninstall` is idempotent: a no-op if the user never ran
+    # `mcp-gateway service install`. We swallow errors so a partially
+    # broken install never blocks brew from removing the binary.
+    system "#{bin}/mcp-gateway", "service", "uninstall" rescue nil
+  end
+
+  def caveats
+    <<~EOS
+      First-run wizard:
+        mcp-gateway init
+
+      Useful commands once installed:
+        mcp-gateway tui              live ops dashboard
+        mcp-gateway list             show servers + tool counts
+        mcp-gateway service status   inspect the launchd auto-start service
+
+      `mcp-gateway init` can install a launchd plist so the daemon auto-starts
+      on login. `brew uninstall` will automatically tear down that plist via the
+      uninstall preflight, but it WILL NOT delete `~/.mcp-gateway/` (your config
+      and logs). Remove it manually if you no longer want it:
+        rm -rf ~/.mcp-gateway
+    EOS
   end
 
   test do
