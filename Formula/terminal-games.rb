@@ -3,15 +3,15 @@ class TerminalGames < Formula
 
   desc "A collection of classic mini games you can play right in your terminal"
   homepage "https://github.com/ayu5h-raj/terminal-games"
-  url "https://files.pythonhosted.org/packages/59/ac/13f72ec93849df7d762a6f5e95fe33f6cd1a38168a9db1c2cd86ba2d49b9/terminal_games-0.1.1.tar.gz"
-  sha256 "433a078e3ace709fd06f17bc5417e2d5cc34fbc8d261b2087b9b1a8ccf0ed67c"
+  url "https://files.pythonhosted.org/packages/5c/51/75c12b3e548f22cd42107662726c85adc26f0bba58c20f8f40f267c50ce2/terminal_games-0.2.0.tar.gz"
+  sha256 "f5fd463d7027642e1d951bf96485c66437d28b255b2654b621abae3665b69944"
   license "MIT"
 
   depends_on "python@3.13"
 
   resource "blessed" do
-    url "https://files.pythonhosted.org/packages/e6/0c/658dea9ba35fcea19e6feaa8ba0d2dbf8cac9aeaa1f9ab1d77d36f534757/blessed-1.32.0.tar.gz"
-    sha256 "d4090e9908cf86bea15a5275845c8bfc69c4c34eb6d22de07c65d26f1e54a918"
+    url "https://files.pythonhosted.org/packages/9f/1f/f2535d0eb1fb8af7915f96b4d42810345c255bbbca39939a23e59c0695d8/blessed-1.38.0.tar.gz"
+    sha256 "89ce6ec6567f7aced0716b73577b7a1702eb23c667838bb46d7d9bd48c36d1b3"
   end
 
   resource "wcwidth" do
