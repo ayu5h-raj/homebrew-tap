@@ -3,8 +3,8 @@ class TerminalGames < Formula
 
   desc "A collection of classic mini games you can play right in your terminal"
   homepage "https://github.com/ayu5h-raj/terminal-games"
-  url "https://files.pythonhosted.org/packages/5c/51/75c12b3e548f22cd42107662726c85adc26f0bba58c20f8f40f267c50ce2/terminal_games-0.2.0.tar.gz"
-  sha256 "f5fd463d7027642e1d951bf96485c66437d28b255b2654b621abae3665b69944"
+  url "https://files.pythonhosted.org/packages/97/a4/f1e1fd6bf1d6bc0d0a47e9f385e314f1b87deec7b47eb3ec832521177ba3/terminal_games-0.3.0.tar.gz"
+  sha256 "3af12b94b4463a959273ff4d1520db6ad770b8f704101e0443878d6c26b7c30f"
   license "MIT"
 
   depends_on "python@3.13"
